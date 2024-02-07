@@ -1,14 +1,16 @@
-// Импортируем необходимые библиотеки
-import React from 'react'
-import { Container, Button } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { Button } from '../components/Button/Button'
+import { useFetch } from '../Hooks/useFetch'
 
-// Создаем компонент для главной страницы
-function Home() {
-	return (
-		// Создаем большой блок с приветствием и ссылками на категории с помощью react-bootstrap
+export default function Home() {
+	const { data, error, loading } = useFetch('http://localhost:3005/episodes')
+
+	return loading ? (
+		<div style={{ fontSize: '5rem' }}>Loading...</div>
+	) : (
 		<Container>
-			<h1>Добро пожаловать в Rick and Morty App!</h1>
+			<h2>Добро пожаловать в Rick and Morty App!</h2>
 			<p>
 				Это интерактивное приложение, которое позволяет тебе узнать больше о
 				персонажах, локациях и эпизодах из популярного мультсериала Рик и Морти.
@@ -17,21 +19,26 @@ function Home() {
 				Выбери категорию, которая тебя интересует, и начни свое приключение в
 				мультивселенной!
 			</p>
-			<p>
-				{/* Создаем кнопки с ссылками на категории с помощью react-bootstrap и react-router-dom */}
-				<Link to="/characters">
-					<Button variant="primary">Герои</Button>
-				</Link>{' '}
-				<Link to="/locations">
-					<Button variant="success">Локации</Button>
-				</Link>{' '}
-				<Link to="/episodes">
-					<Button variant="warning">Эпизоды</Button>
-				</Link>
-			</p>
+			{data &&
+				data.map(({ id, name, air_date, episode, created }) => (
+					<ul
+						style={{
+							display: 'flex',
+							// margin: 'auto',
+							// width: '100%',
+							textAlign: 'start',
+							background: 'black',
+							color: '#fff',
+							justifyContent: 'space-between',
+							justifyItems: 'space-between',
+						}}
+						key={id}
+					>
+						<li>
+							{id} {name} {air_date} {episode} {created.slice(0, 10)}
+						</li>
+					</ul>
+				))}
 		</Container>
 	)
 }
-
-// Экспортируем компонент для главной страницы
-export default Home

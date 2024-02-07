@@ -18,6 +18,21 @@ h1 {
 	text-shadow: -4px 6px 5px rgb(134, 1, 1);
 }
 
-h4 {
-	text-decoration: underline;
+h2 {
+	margin: auto;
+	padding-bottom: 10px;
+	width: 60%;
+	justify-items: center;
+	color: rgb(161, 250, 148);
+	font-size: 3rem;
+	text-shadow: -4px 6px 5px rgb(5, 1, 41);
+}
+
+p {
+	margin: auto;
+	width: 90%;
+	font-size: 1.5rem;
+	font-weight: 700;
+	justify-items: center;
+	color: rgb(88, 2, 17);
 }
