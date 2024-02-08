@@ -13,16 +13,19 @@ export default function Category() {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		import('../../db.json')
-			.then((json) => {
+		async function fetchData() {
+			try {
+				const json = await import('../../db.json')
 				const array = json[category]
 				setData(array)
 				setLoading(false)
-			})
-			.catch((error) => {
+			} catch (error) {
 				console.error(error)
 				setLoading(false)
-			})
+			}
+		}
+
+		fetchData()
 	}, [category])
 
 	const sortByCreated = (array, order) => {
@@ -63,7 +66,7 @@ export default function Category() {
 					</Form.Control>
 				</Form.Group>
 			</Form>
-			{loading ? (
+			{!data || loading ? (
 				<Spinner animation="border" role="status">
 					<span className="visually-hidden">Загрузка...</span>
 				</Spinner>

@@ -10,24 +10,29 @@ import styles from './Detail.module.css'
 export default function Detail() {
 	const { category, id } = useParams()
 	const [data, setData] = useState({})
+	console.log('####: data', data)
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		import('../../db.json')
-			.then((json) => {
+		async function fetchData() {
+			try {
+				const json = await import('../../db.json')
 				const item = json[category].find((item) => item.id === Number(id))
 				setData(item)
 				setLoading(false)
-			})
-			.catch((error) => {
+			} catch (error) {
 				console.error(error)
 				setLoading(false)
-			})
+			}
+		}
+
+		fetchData()
 	}, [category, id])
+
 	return (
 		<div className={styles.Detail}>
 			<Navigation />
-			{loading ? (
+			{!data || loading ? (
 				<Spinner animation="border" role="status">
 					<span className="visually-hidden">Загрузка...</span>
 				</Spinner>
@@ -48,7 +53,8 @@ export default function Detail() {
 								<ListGroup>
 									{data.episode.map((ep) => (
 										<ListGroup.Item key={ep}>
-											<Link to={`/episodes/${ep.split('/').pop()}`}>
+											{/* <Link to={`/episodes/${ep.split('/').pop()}`}> */}
+											<Link to={`/${category}/${ep.split('/').pop()}`}>
 												{getEpisodeName(ep)}
 											</Link>
 										</ListGroup.Item>
@@ -64,7 +70,8 @@ export default function Detail() {
 								<ListGroup>
 									{data.residents.map((res) => (
 										<ListGroup.Item key={res}>
-											<Link to={`/characters/${res.split('/').pop()}`}>
+											{/* <Link to={`/characters/${res.split('/').pop()}`}> */}
+											<Link to={`/${category}/${res.split('/').pop()}`}>
 												{getCharacterName(res)}
 											</Link>
 										</ListGroup.Item>
@@ -80,7 +87,8 @@ export default function Detail() {
 								<ListGroup>
 									{data.characters.map((char) => (
 										<ListGroup.Item key={char}>
-											<Link to={`/characters/${char.split('/').pop()}`}>
+											{/* <Link to={`/characters/${char.split('/').pop()}`}> */}
+											<Link to={`/${category}/${char.split('/').pop()}`}>
 												{getCharacterName(char)}
 											</Link>
 										</ListGroup.Item>

@@ -3,35 +3,4 @@
 
 /* Определяем класс Navigation для корневого элемента Navbar */
 .Navigation {
-	/* Устанавливаем фиксированную позицию сверху */
-	position: fixed;
-	top: 25px;
-	/* Задаем ширину 100% */
-	width: 100%;
-	/* Добавляем тень */
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Определяем классы для элементов Link внутри Nav */
-.Navigation .nav-link {
-	/* Устанавливаем цвет текста */
-	color: var(--text-color);
-	/* Убираем подчеркивание */
-	text-decoration: none;
-	/* Добавляем отступы */
-	padding: 0.5rem 1rem;
-}
-
-/* Добавляем эффект при наведении на элемент Link */
-.Navigation .nav-link:hover {
-	/* Изменяем цвет текста */
-	color: var(--accent-color);
-	/* Добавляем подчеркивание */
-	text-decoration: underline;
-}
-
-/* Определяем класс для элемента img внутри Navbar.Brand */
-.Navigation .navbar-brand img {
-	/* Устанавливаем отступ слева */
-	margin-left: 0.5rem;
 }
