@@ -1,23 +1,49 @@
-.app {
-	text-align: center;
-}
-
-.appHeader {
+/* Создаем селектор для класса App, который применяется к корневому элементу компонента */
+.App {
+	/* Добавляем фоновое изображение, которое соответствует теме вселенной Рика и Морти */
+	background-image: url(./assets/RickMorty.jpg);
+	/* Добавляем повторение фонового изображения по горизонтали и вертикали */
+	background-repeat: repeat;
+	/* Добавляем центрирование фонового изображения */
+	background-position: center;
+	/* Добавляем подстройку фонового изображения под размер экрана */
+	background-size: cover;
+	/* Добавляем минимальную высоту компонента, которая равна высоте экрана */
 	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	font-size: calc(10px + 2vmin);
-	color: #282c34;
 }
 
-h1 {
-	color: bisque;
-	font-size: 4rem;
-	text-shadow: -4px 6px 5px rgb(134, 1, 1);
+/* Создаем селектор для компонента BrowserRouter, который создает роутер */
+.App browser-router {
+	/* Добавляем внутренние отступы для создания пространства вокруг содержимого */
+	padding: 20px;
 }
 
-h4 {
-	text-decoration: underline;
+/* Определяем переменные для цветов */
+:root {
+	/* Основной цвет текста */
+	--text-color: #333333;
+	/* Акцентный цвет для ссылок и подчеркиваний */
+	--accent-color: #ff9900;
+	/* Цвет фона для навигационной панели */
+	--nav-bg-color: #ffffff;
+}
+
+/* Определяем переменные для шрифтов */
+:root {
+	/* Основной шрифт для текста */
+	--font-family: Arial, sans-serif;
+	/* Размер шрифта для текста */
+	--font-size: 16px;
+	/* Жирность шрифта для текста */
+	--font-weight: normal;
+}
+
+/* Определяем переменные для размеров */
+:root {
+	/* Высота навигационной панели */
+	--nav-height: 60px;
+	/* Ширина логотипа */
+	--logo-width: 50px;
+	/* Высота логотипа */
+	--logo-height: 50px;
 }

@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import { ListGroup, Spinner, Form } from 'react-bootstrap'
-import Navigation from './Navigation'
+import Navigation from '../Navigation/Navigation'
+import styles from './Category.module.css'
 
 export default function Category() {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -12,7 +13,7 @@ export default function Category() {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		import('../db.json')
+		import('../../db.json')
 			.then((json) => {
 				const array = json[category]
 				setData(array)
@@ -46,7 +47,7 @@ export default function Category() {
 	}
 
 	return (
-		<div className="Category">
+		<div className={styles.Category}>
 			<Navigation />
 			<Form>
 				<Form.Group controlId="sortSelect">

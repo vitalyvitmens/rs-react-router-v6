@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Card, ListGroup, Spinner } from 'react-bootstrap'
-import { getEpisodeName } from '../utils/getEpisodeName'
-import { getCharacterName } from '../utils/getCharacterName'
-import Navigation from './Navigation'
+import { getEpisodeName } from '../../utils/getEpisodeName'
+import { getCharacterName } from '../../utils/getCharacterName'
+import Navigation from '../Navigation/Navigation'
+import styles from './Detail.module.css'
 
 export default function Detail() {
 	const { category, id } = useParams()
@@ -12,7 +13,7 @@ export default function Detail() {
 	const [loading, setLoading] = useState(true)
 
 	useEffect(() => {
-		import('../db.json')
+		import('../../db.json')
 			.then((json) => {
 				const item = json[category].find((item) => item.id === Number(id))
 				setData(item)
@@ -24,7 +25,7 @@ export default function Detail() {
 			})
 	}, [category, id])
 	return (
-		<div className="Detail">
+		<div className={styles.Detail}>
 			<Navigation />
 			{loading ? (
 				<Spinner animation="border" role="status">
