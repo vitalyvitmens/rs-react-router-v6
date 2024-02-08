@@ -13,7 +13,7 @@ export default function Navigation() {
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Collapse id="basic-navbar-nav">
-				<Nav className="mr-auto">
+				<Nav className={styles.center}>
 					<Link to="/characters">Герои</Link>
 					<Link to="/locations">Локации</Link>
 					<Link to="/episodes">Эпизоды</Link>

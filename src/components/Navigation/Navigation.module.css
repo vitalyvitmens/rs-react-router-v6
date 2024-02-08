@@ -1,6 +1,12 @@
-/* Импортируем переменные из файла variables.css */
-@import '.././../app.module.css';
 
-/* Определяем класс Navigation для корневого элемента Navbar */
 .Navigation {
+
+}
+
+.center {
+  display: flex;
+	padding-bottom: 10px;
+	justify-content: space-around;
+  font-size: 2rem;
+  font-weight: 700;
 }

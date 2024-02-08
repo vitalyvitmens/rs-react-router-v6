@@ -9,6 +9,9 @@ import styles from './Detail.module.css'
 
 export default function Detail() {
 	const { category, id } = useParams()
+	console.log('####: category', category)
+	console.log('####: id', id)
+
 	const [data, setData] = useState({})
 	console.log('####: data', data)
 	const [loading, setLoading] = useState(true)
@@ -53,8 +56,7 @@ export default function Detail() {
 								<ListGroup>
 									{data.episode.map((ep) => (
 										<ListGroup.Item key={ep}>
-											{/* <Link to={`/episodes/${ep.split('/').pop()}`}> */}
-											<Link to={`/${category}/${ep.split('/').pop()}`}>
+											<Link to={`/episodes/${ep.split('/').pop()}`}>
 												{getEpisodeName(ep)}
 											</Link>
 										</ListGroup.Item>
@@ -70,8 +72,7 @@ export default function Detail() {
 								<ListGroup>
 									{data.residents.map((res) => (
 										<ListGroup.Item key={res}>
-											{/* <Link to={`/characters/${res.split('/').pop()}`}> */}
-											<Link to={`/${category}/${res.split('/').pop()}`}>
+											<Link to={`/characters/${res.split('/').pop()}`}>
 												{getCharacterName(res)}
 											</Link>
 										</ListGroup.Item>
