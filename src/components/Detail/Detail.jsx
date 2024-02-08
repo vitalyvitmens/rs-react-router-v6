@@ -1,17 +1,18 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, ListGroup, Spinner } from 'react-bootstrap'
 import { getEpisodeName } from '../../utils/getEpisodeName'
 import { getCharacterName } from '../../utils/getCharacterName'
 import Navigation from '../Navigation/Navigation'
 import styles from './Detail.module.css'
 
-export default function Detail({ category, id, setSelected }) {
-  console.log('####: category', category)
+export default function Detail() {
+	const { category, id } = useParams()
 
 	const [data, setData] = useState({})
-	console.log('####: data', data)
 	const [loading, setLoading] = useState(true)
+	console.log('####: category', category)
+	console.log('####: data', data)
 
 	useEffect(() => {
 		async function fetchData() {
@@ -52,15 +53,20 @@ export default function Detail({ category, id, setSelected }) {
 								<p>Место рождения: {data.origin.name}</p>
 								<p>Текущее местоположение: {data.location.name}</p>
 								<p>Эпизоды:</p>
-								<ListGroup>
-									{data.episode.map((ep) => (
-										<ListGroup.Item key={ep}>
-											<Link to={`/${category}/${ep}`}>
-												{getEpisodeName(ep)}
-											</Link>
-										</ListGroup.Item>
-									))}
-								</ListGroup>
+								{data.episode && data.episode.length > 0 && (
+									<ListGroup>
+										{data.episode.map(
+											(ep) =>
+												ep && (
+													<ListGroup.Item key={ep}>
+														<Link to={`/${category}/${ep}`}>
+															{getEpisodeName(ep)}
+														</Link>
+													</ListGroup.Item>
+												)
+										)}
+									</ListGroup>
+								)}
 							</div>
 						)}
 						{category === 'locations' && (
@@ -68,15 +74,20 @@ export default function Detail({ category, id, setSelected }) {
 								<p>Тип: {data.type}</p>
 								<p>Измерение: {data.dimension}</p>
 								<p>Персонажи:</p>
-								<ListGroup>
-									{data.residents.map((res) => (
-										<ListGroup.Item key={res}>
-											<Link to={`/${category}/${res}`}>
-												{getCharacterName(res)}
-											</Link>
-										</ListGroup.Item>
-									))}
-								</ListGroup>
+								{data.residents && data.residents.length > 0 && (
+									<ListGroup>
+										{data.residents.map(
+											(res) =>
+												res && (
+													<ListGroup.Item key={res}>
+														<Link to={`/${category}/${res}`}>
+															{getCharacterName(res)}
+														</Link>
+													</ListGroup.Item>
+												)
+										)}
+									</ListGroup>
+								)}
 							</div>
 						)}
 						{category === 'episodes' && (
@@ -84,15 +95,20 @@ export default function Detail({ category, id, setSelected }) {
 								<p>Дата выхода: {data.air_date}</p>
 								<p>Номер эпизода: {data.episode}</p>
 								<p>Персонажи:</p>
-								<ListGroup>
-									{data.characters.map((char) => (
-										<ListGroup.Item key={char}>
-											<Link to={`/${category}/${char}`}>
-												{getCharacterName(char)}
-											</Link>
-										</ListGroup.Item>
-									))}
-								</ListGroup>
+								{data.characters && data.characters.length > 0 && (
+									<ListGroup>
+										{data.characters.map(
+											(char) =>
+												char && (
+													<ListGroup.Item key={char}>
+														<Link to={`/${category}/${char}`}>
+															{getCharacterName(char)}
+														</Link>
+													</ListGroup.Item>
+												)
+										)}
+									</ListGroup>
+								)}
 							</div>
 						)}
 					</Card.Body>

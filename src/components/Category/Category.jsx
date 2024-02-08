@@ -81,7 +81,7 @@ export default function Category() {
 					))}
 				</ListGroup>
 			)}
-			<Detail category={category} id={data.id} setSelected={setSelected} />
+			{/* <Detail category={category} id={data.id} setSelected={setSelected} /> */}
 		</div>
 	)
 }
