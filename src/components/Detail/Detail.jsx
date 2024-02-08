@@ -50,8 +50,14 @@ export default function Detail() {
 								<p>Вид: {data.species}</p>
 								<p>Тип: {data.type || 'нет'}</p>
 								<p>Пол: {data.gender}</p>
-								<p>Место рождения: {data.origin.name}</p>
-								<p>Текущее местоположение: {data.location.name}</p>
+								<p>
+									Место рождения:{' '}
+									{data.origin ? data.origin.name : 'неизвестно'}
+								</p>
+								<p>
+									Текущее местоположение:{' '}
+									{data.location ? data.location.name : 'неизвестно'}
+								</p>
 								<p>Эпизоды:</p>
 								{data.episode && data.episode.length > 0 && (
 									<ListGroup>
