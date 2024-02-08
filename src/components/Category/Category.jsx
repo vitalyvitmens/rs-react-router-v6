@@ -8,7 +8,7 @@ export default function Category() {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const { category } = useParams()
 	const sort = searchParams.get('sort')
-
+	const [selected, setSelected] = useState(null)
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 
@@ -73,7 +73,7 @@ export default function Category() {
 			) : (
 				<ListGroup>
 					{sortByCreated(data, sort).map((item) => (
-						<ListGroup.Item key={item.id}>
+						<ListGroup.Item key={item.id} onClick={() => setSelected(item.id)}>
 							<Link to={`/${category}/${item.id}`}>{item.name}</Link>
 						</ListGroup.Item>
 					))}
