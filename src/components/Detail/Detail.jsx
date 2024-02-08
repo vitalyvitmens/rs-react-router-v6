@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Card, ListGroup, Spinner } from 'react-bootstrap'
 import { getEpisodeName } from '../../utils/getEpisodeName'
 import { getCharacterName } from '../../utils/getCharacterName'
 import Navigation from '../Navigation/Navigation'
+import { Button } from '../Button/Button'
 import styles from './Detail.module.css'
 
 export default function Detail() {
 	const { category, id } = useParams()
-
+	const navigate = useNavigate()
 	const [data, setData] = useState({})
 	const [loading, setLoading] = useState(true)
-	console.log('####: category', category)
 	console.log('####: data', data)
 
 	useEffect(() => {
@@ -46,19 +46,10 @@ export default function Detail() {
 					<Card.Body>
 						{category === 'characters' && (
 							<div>
-								<p>Статус: {data.status}</p>
-								<p>Вид: {data.species}</p>
+								<p>Пол: {data.gender || 'нет'}</p>
+								<p>Вид: {data.species || 'нет'}</p>
+								<p>Статус: {data.status || 'нет'}</p>
 								<p>Тип: {data.type || 'нет'}</p>
-								<p>Пол: {data.gender}</p>
-								<p>
-									Место рождения:{' '}
-									{data.origin ? data.origin.name : 'неизвестно'}
-								</p>
-								<p>
-									Текущее местоположение:{' '}
-									{data.location ? data.location.name : 'неизвестно'}
-								</p>
-								<p>Эпизоды:</p>
 								{data.episode && data.episode.length > 0 && (
 									<ListGroup>
 										{data.episode.map(
@@ -77,9 +68,8 @@ export default function Detail() {
 						)}
 						{category === 'locations' && (
 							<div>
-								<p>Тип: {data.type}</p>
-								<p>Измерение: {data.dimension}</p>
-								<p>Персонажи:</p>
+								<p>Тип: {data.type || 'нет'}</p>
+								<p>Измерение: {data.dimension || 'нет'}</p>
 								{data.residents && data.residents.length > 0 && (
 									<ListGroup>
 										{data.residents.map(
@@ -98,9 +88,8 @@ export default function Detail() {
 						)}
 						{category === 'episodes' && (
 							<div>
-								<p>Дата выхода: {data.air_date}</p>
-								<p>Номер эпизода: {data.episode}</p>
-								<p>Персонажи:</p>
+								<p>Номер эпизода: {data.episode || 'нет'}</p>
+								<p>Дата выхода: {data.air_date || 'нет'}</p>
 								{data.characters && data.characters.length > 0 && (
 									<ListGroup>
 										{data.characters.map(
@@ -120,6 +109,7 @@ export default function Detail() {
 					</Card.Body>
 				</Card>
 			)}
+			<Button onClick={() => navigate(-1)}>Вернуться назад к списку</Button>
 		</div>
 	)
 }
