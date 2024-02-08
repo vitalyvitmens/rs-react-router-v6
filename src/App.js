@@ -8,40 +8,21 @@ import NotFound from './components/NotFound'
 import styles from './app.module.css'
 
 export const App = () => {
+	// Возвращаем JSX-разметку, которая описывает, как выглядит наше приложение
 	return (
+		// Используем компонент BrowserRouter из библиотеки react-router-dom для создания роутера
 		<BrowserRouter>
-			<div className={styles.app}>
-				<h1>React Router V6</h1>
-					<Container>
-						<Navbar.Brand style={{ color: '#fff', fontSize: '2rem' }} href="/">
-							Rick and Morty App
-						</Navbar.Brand>
-						<Navbar.Toggle aria-controls="basic-navbar-nav" />
-						<div
-							style={{
-								display: 'flex',
-								gap: '10px',
-								justifyContent: 'center',
-							}}
-						>
-							<Link to="/characters">
-								<Button>Герои</Button>
-							</Link>
-							<Link to="/locations">
-								<Button>Локации</Button>
-							</Link>
-							<Link to="/episodes">
-								<Button>Эпизоды</Button>
-							</Link>
-						</div>
-					</Container>
-				<Routes>
-					<Route path="/" element={<Home />} />
-					<Route path="/:category" element={<Category />} />
-					<Route path="/:category/:id" element={<Detail />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</div>
+			{/* Используем компонент Routes из библиотеки react-router-dom для создания маршрутов */}
+			<Routes>
+				{/* Создаем маршрут для главной страницы с помощью компонента Route из библиотеки react-router-dom */}
+				<Route path="/" element={<Home />} />
+				{/* Создаем маршрут для страницы категории с помощью компонента Route из библиотеки react-router-dom */}
+				<Route path="/:category" element={<Category />} />
+				{/* Создаем маршрут для детальной страницы элемента с помощью компонента Route из библиотеки react-router-dom */}
+				<Route path="/:category/:id" element={<Detail />} />
+				{/* Создаем маршрут для страницы 404 с помощью компонента Route из библиотеки react-router-dom */}
+				<Route path="*" element={<NotFound />} />
+			</Routes>
 		</BrowserRouter>
 	)
 }
