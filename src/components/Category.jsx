@@ -44,7 +44,7 @@ export default function Category() {
 							<Card.Header>
 								<Link
 									style={{ fontSize: '' }}
-									to={`http://localhost:3005/${category}/${item.id}`}
+									to={`/${item.id}`}
 								>
 									{item.name}
 								</Link>
