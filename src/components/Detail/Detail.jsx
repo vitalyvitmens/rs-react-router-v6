@@ -20,7 +20,9 @@ export default function Detail() {
 		async function fetchData() {
 			try {
 				const json = await import('../../db.json')
-				const item = json[category].find((item) => item.id === Number(id))
+				const item = json[category]
+					? json[category].find((item) => item.id === Number(id))
+					: null
 				setData(item)
 				setLoading(false)
 			} catch (error) {
@@ -56,7 +58,7 @@ export default function Detail() {
 								<ListGroup>
 									{data.episode.map((ep) => (
 										<ListGroup.Item key={ep}>
-											<Link to={`/episodes/${ep.split('/').pop()}`}>
+											<Link to={`/${category}/${ep}`}>
 												{getEpisodeName(ep)}
 											</Link>
 										</ListGroup.Item>
@@ -72,7 +74,7 @@ export default function Detail() {
 								<ListGroup>
 									{data.residents.map((res) => (
 										<ListGroup.Item key={res}>
-											<Link to={`/characters/${res.split('/').pop()}`}>
+											<Link to={`/${category}/${res}`}>
 												{getCharacterName(res)}
 											</Link>
 										</ListGroup.Item>
@@ -88,8 +90,7 @@ export default function Detail() {
 								<ListGroup>
 									{data.characters.map((char) => (
 										<ListGroup.Item key={char}>
-											{/* <Link to={`/characters/${char.split('/').pop()}`}> */}
-											<Link to={`/${category}/${char.split('/').pop()}`}>
+										<Link to={`/${category}/${char}`}>
 												{getCharacterName(char)}
 											</Link>
 										</ListGroup.Item>
