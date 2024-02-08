@@ -9,6 +9,7 @@ export default function Category() {
 	const { category } = useParams()
 	const sort = searchParams.get('sort')
 	const [selected, setSelected] = useState(null)
+  console.log('####: selected', selected)
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 

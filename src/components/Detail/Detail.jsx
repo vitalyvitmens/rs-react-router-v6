@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { Card, ListGroup, Spinner } from 'react-bootstrap'
 import { getEpisodeName } from '../../utils/getEpisodeName'
