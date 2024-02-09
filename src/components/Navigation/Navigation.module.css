@@ -1,0 +1,10 @@
+.Navigation {
+	width: 600px;
+}
+
+.center {
+	display: flex;
+	justify-content: space-around;
+	font-size: 2rem;
+	font-weight: 700;
+}

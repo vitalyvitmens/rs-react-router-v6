@@ -1,23 +1,11 @@
-.app {
-	text-align: center;
-}
-
-.appHeader {
-	min-height: 100vh;
+.App {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	background-image: url(./assets/RickMorty.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	height: 100vh;
+	min-width: 100vh;
 	justify-content: space-around;
-	font-size: calc(10px + 2vmin);
-	color: #282c34;
-}
-
-h1 {
-	color: bisque;
-  font-size: 4rem;
-  text-shadow:-4px 6px 5px rgb(134, 1, 1);
-}
-
-h4 {
-	text-decoration: underline;
+	padding: 100px 0 40px 0;
 }

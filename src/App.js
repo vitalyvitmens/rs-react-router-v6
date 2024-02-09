@@ -1,9 +1,17 @@
-import styles from './app.module.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Home, Category, Detail, NotFound } from './components'
 
 export const App = () => {
 	return (
-		<div className={styles.app}>
-			<h1>React Router V6</h1>
+		<div className={styles.App}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/:category" element={<Category />} />
+					<Route path="/:category/:id" element={<Detail />} />
+					<Route path="*" element={<NotFound />} />
+				</Routes>
+			</BrowserRouter>
 		</div>
 	)
 }
