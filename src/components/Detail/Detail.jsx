@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Card, ListGroup, Spinner } from 'react-bootstrap'
+import { ListGroup, Spinner } from 'react-bootstrap'
 import { getEpisodeName } from '../../utils/getEpisodeName'
 import { getCharacterName } from '../../utils/getCharacterName'
 import Navigation from '../Navigation/Navigation'
@@ -40,74 +40,100 @@ export default function Detail() {
 					<span className="visually-hidden">Загрузка...</span>
 				</Spinner>
 			) : (
-				<Card>
-					{data.image && <Card.Img variant="top" src={data.image} />}
-					<Card.Header>{data.name}</Card.Header>
-					<Card.Body>
-						{category === 'characters' && (
-							<div>
-								<p>Пол: {data.gender || 'нет'}</p>
-								<p>Вид: {data.species || 'нет'}</p>
-								<p>Статус: {data.status || 'нет'}</p>
-								<p>Тип: {data.type || 'нет'}</p>
-								{data.episode && data.episode.length > 0 && (
-									<ListGroup>
-										{data.episode.map(
-											(ep) =>
-												ep && (
-													<ListGroup.Item key={ep}>
-														<Link to={`/${category}/${ep}`}>
-															{getEpisodeName(ep)}
-														</Link>
-													</ListGroup.Item>
-												)
-										)}
-									</ListGroup>
-								)}
-							</div>
-						)}
-						{category === 'locations' && (
-							<div>
-								<p>Тип: {data.type || 'нет'}</p>
-								<p>Измерение: {data.dimension || 'нет'}</p>
-								{data.residents && data.residents.length > 0 && (
-									<ListGroup>
-										{data.residents.map(
-											(res) =>
-												res && (
-													<ListGroup.Item key={res}>
-														<Link to={`/${category}/${res}`}>
-															{getCharacterName(res)}
-														</Link>
-													</ListGroup.Item>
-												)
-										)}
-									</ListGroup>
-								)}
-							</div>
-						)}
-						{category === 'episodes' && (
-							<div>
-								<p>Номер эпизода: {data.episode || 'нет'}</p>
-								<p>Дата выхода: {data.air_date || 'нет'}</p>
-								{data.characters && data.characters.length > 0 && (
-									<ListGroup>
-										{data.characters.map(
-											(char) =>
-												char && (
-													<ListGroup.Item key={char}>
-														<Link to={`/${category}/${char}`}>
-															{getCharacterName(char)}
-														</Link>
-													</ListGroup.Item>
-												)
-										)}
-									</ListGroup>
-								)}
-							</div>
-						)}
-					</Card.Body>
-				</Card>
+				<div className={styles.row}>
+					{data.image && <img src={data.image} alt={data.name} />}
+					<div className={styles.column}>
+						<div className={styles.name}>{data.name}</div>
+						<div className={styles.body}>
+							{category === 'characters' && (
+								<div>
+									<p>
+										<span>Пол: </span>
+										{data.gender || 'нет'}
+									</p>
+									<p>
+										<span>Вид: </span>
+										{data.species || 'нет'}
+									</p>
+									<p>
+										<span>Статус: </span>
+										{data.status || 'нет'}
+									</p>
+									<p>
+										<span>Тип: </span>
+										{data.type || 'нет'}
+									</p>
+									{data.episode && data.episode.length > 0 && (
+										<ListGroup>
+											{data.episode.map(
+												(ep) =>
+													ep && (
+														<ListGroup.Item key={ep}>
+															<Link to={`/${category}/${ep}`}>
+																{getEpisodeName(ep)}
+															</Link>
+														</ListGroup.Item>
+													)
+											)}
+										</ListGroup>
+									)}
+								</div>
+							)}
+							{category === 'locations' && (
+								<div>
+									<p>
+										<span>Тип: </span>
+										{data.type || 'нет'}
+									</p>
+									<p>
+										<span>Измерение: </span>
+										{data.dimension || 'нет'}
+									</p>
+									{data.residents && data.residents.length > 0 && (
+										<ListGroup>
+											{data.residents.map(
+												(res) =>
+													res && (
+														<ListGroup.Item key={res}>
+															<Link to={`/${category}/${res}`}>
+																{getCharacterName(res)}
+															</Link>
+														</ListGroup.Item>
+													)
+											)}
+										</ListGroup>
+									)}
+								</div>
+							)}
+							{category === 'episodes' && (
+								<div>
+									<p>
+										<span>Номер эпизода: </span>
+										{data.episode || 'нет'}
+									</p>
+									<p>
+										<span>Дата выхода: </span>
+										{data.air_date || 'нет'}
+									</p>
+									{data.characters && data.characters.length > 0 && (
+										<ListGroup>
+											{data.characters.map(
+												(char) =>
+													char && (
+														<ListGroup.Item key={char}>
+															<Link to={`/${category}/${char}`}>
+																{getCharacterName(char)}
+															</Link>
+														</ListGroup.Item>
+													)
+											)}
+										</ListGroup>
+									)}
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
 			)}
 			<Button onClick={() => navigate(-1)}>Вернуться назад к списку</Button>
 		</div>

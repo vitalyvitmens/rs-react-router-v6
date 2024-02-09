@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
-import { ListGroup, Spinner, Form } from 'react-bootstrap'
+import { Spinner, Form } from 'react-bootstrap'
 import Navigation from '../Navigation/Navigation'
 import styles from './Category.module.css'
 
@@ -51,32 +51,32 @@ export default function Category() {
 	return (
 		<div className={styles.Category}>
 			<Navigation />
-			<Form>
-				<Form.Group controlId="sortSelect">
-					<Form.Label>Сортировать по дате создания:</Form.Label>
-					<Form.Control
-						as="select"
-						value={sort || ''}
-						onChange={handleChangeSort}
-					>
-						<option value="">Без сортировки</option>
-						<option value="ASC">По возрастанию</option>
-						<option value="DESC">По убыванию</option>
-					</Form.Control>
-				</Form.Group>
-			</Form>
+			<form>
+				<label htmlFor="select">Сортировать по дате создания:</label>
+				<Form.Control
+					id="select"
+					name="select"
+					as="select"
+					value={sort || ''}
+					onChange={handleChangeSort}
+				>
+					<option value="">Без сортировки</option>
+					<option value="ASC">По возрастанию</option>
+					<option value="DESC">По убыванию</option>
+				</Form.Control>
+			</form>
 			{!data || loading ? (
 				<Spinner animation="border" role="status">
 					<span className="visually-hidden">Загрузка...</span>
 				</Spinner>
 			) : (
-				<ListGroup>
+				<ul>
 					{sortByCreated(data, sort).map((item) => (
-						<ListGroup.Item key={item.id}>
+						<li key={item.id}>
 							<Link to={`/${category}/${item.id}`}>{item.name}</Link>
-						</ListGroup.Item>
+						</li>
 					))}
-				</ListGroup>
+				</ul>
 			)}
 		</div>
 	)
