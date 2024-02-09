@@ -7,21 +7,22 @@
 }
 
 .NotFound h1 {
-	color: #00a6a6;
+  margin-top: 70px;
+	color: rgb(215, 2, 2);
 	font-family: 'Baloo Bhai', cursive;
 	font-size: 36px;
 	text-align: center;
 }
 
 .NotFound p {
-	color: #00a6a6;
+	color: rgb(215, 2, 2);
 	font-family: 'Baloo Bhai', cursive;
 	font-size: 24px;
 	text-align: center;
 }
 
 .NotFound link {
-	color: #00a6a6;
+	color: #027979;
 	font-family: 'Baloo Bhai', cursive;
 	font-size: 24px;
 	text-align: center;
@@ -30,4 +31,16 @@
 
 .NotFound link:hover {
 	color: #f4f4f4;
+}
+
+.center {
+	display: flex;
+	font-size: 1.5rem;
+	font-weight: 600;
+	justify-content: center;
+	padding-top: 40px;
+}
+
+.center:hover {
+	opacity: 0.8;
 }

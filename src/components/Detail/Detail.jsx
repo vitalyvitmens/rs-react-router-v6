@@ -12,7 +12,6 @@ export default function Detail() {
 	const navigate = useNavigate()
 	const [data, setData] = useState({})
 	const [loading, setLoading] = useState(true)
-	console.log('####: data', data)
 
 	useEffect(() => {
 		async function fetchData() {

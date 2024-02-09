@@ -12,7 +12,9 @@ export default function NotFound() {
 				Пожалуйста, проверьте правильность введенного адреса или перейдите на
 				главную страницу.
 			</p>
-			<Link to="/">Перейти на главную страницу</Link>
+			<div className={styles.center}>
+				<Link to="/">Перейти на главную страницу</Link>
+			</div>
 		</div>
 	)
 }
