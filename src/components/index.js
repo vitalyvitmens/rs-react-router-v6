@@ -1,1 +1,7 @@
 export * from './Button/Button.jsx'
+export * from './Category/Category.jsx'
+export * from './CustomSelect/CustomSelect.jsx'
+export * from './Detail/Detail.jsx'
+export * from './Home/Home.jsx'
+export * from './Navigation/Navigation.jsx'
+export * from './NotFound/NotFound.jsx'

@@ -1,7 +1,7 @@
-import Navigation from '../Navigation/Navigation'
+import { Navigation } from '../index'
 import styles from './Home.module.css'
 
-export default function Home() {
+export const Home = () => {
 	return (
 		<div className={styles.Home}>
 			<Navigation />

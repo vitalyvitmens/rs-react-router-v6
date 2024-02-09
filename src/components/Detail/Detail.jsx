@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Button } from '../Button/Button'
-import Navigation from '../Navigation/Navigation'
-import NotFound from '../NotFound/NotFound'
-import { getEpisodeName } from '../../utils/getEpisodeName'
-import { getCharacterName } from '../../utils/getCharacterName'
+import { Button, Navigation, NotFound } from '../index'
+import { getCharacterName, getEpisodeName } from '../../utils'
 import styles from './Detail.module.css'
 
-export default function Detail() {
+export const Detail = () => {
 	const { category, id } = useParams()
 	const navigate = useNavigate()
 	const [data, setData] = useState({})

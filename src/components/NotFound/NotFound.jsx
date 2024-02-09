@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
-import Navigation from '../Navigation/Navigation'
+import { Navigation } from '../index'
 import styles from './NotFound.module.css'
 
-export default function NotFound() {
+export const NotFound = () => {
 	return (
 		<div className={styles.NotFound}>
 			<Navigation />

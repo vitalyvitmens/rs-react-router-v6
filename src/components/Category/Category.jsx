@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
-import Navigation from '../Navigation/Navigation'
-import NotFound from '../NotFound/NotFound'
+import { Navigation, NotFound, CustomSelect } from '../index'
 import styles from './Category.module.css'
-import { CustomSelect } from '../CustomSelect/CustomSelect'
 
-export default function Category() {
+export const Category = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const { category } = useParams()
 	const sort = searchParams.get('sort')
@@ -57,7 +55,6 @@ export default function Category() {
 		<div className={styles.Category}>
 			<Navigation />
 			<form>
-				{/* <label htmlFor="select">Сортировать по дате создания:</label> */}
 				<CustomSelect
 					label="Сортировать по дате создания:"
 					type="select"

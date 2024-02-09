@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.jpg'
 import styles from './Navigation.module.css'
 
-export default function Navigation() {
+export const Navigation = () => {
 	return (
 		<div className={styles.Navigation}>
 			<Link to="/">
