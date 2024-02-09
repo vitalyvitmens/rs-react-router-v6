@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
-import { Spinner, Form } from 'react-bootstrap'
 import Navigation from '../Navigation/Navigation'
 import NotFound from '../NotFound/NotFound'
 import styles from './Category.module.css'
@@ -58,22 +57,19 @@ export default function Category() {
 			<Navigation />
 			<form>
 				<label htmlFor="select">Сортировать по дате создания:</label>
-				<Form.Control
+				<select
 					id="select"
 					name="select"
-					as="select"
 					value={sort || ''}
 					onChange={handleChangeSort}
 				>
 					<option value="">Без сортировки</option>
 					<option value="ASC">По возрастанию</option>
 					<option value="DESC">По убыванию</option>
-				</Form.Control>
+				</select>
 			</form>
 			{!data || loading ? (
-				<Spinner animation="border" role="status">
-					<span className="visually-hidden">Загрузка...</span>
-				</Spinner>
+				<span>Загрузка...</span>
 			) : (
 				<ul>
 					{sortByCreated(data, sort).map((item) => (

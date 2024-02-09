@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { ListGroup, Spinner } from 'react-bootstrap'
-import { getEpisodeName } from '../../utils/getEpisodeName'
-import { getCharacterName } from '../../utils/getCharacterName'
 import { Button } from '../Button/Button'
 import Navigation from '../Navigation/Navigation'
 import NotFound from '../NotFound/NotFound'
+import { getEpisodeName } from '../../utils/getEpisodeName'
+import { getCharacterName } from '../../utils/getCharacterName'
 import styles from './Detail.module.css'
 
 export default function Detail() {
@@ -13,7 +12,6 @@ export default function Detail() {
 	const navigate = useNavigate()
 	const [data, setData] = useState({})
 	const [loading, setLoading] = useState(true)
-	console.log(loading)
 
 	useEffect(() => {
 		async function fetchData() {
@@ -41,9 +39,7 @@ export default function Detail() {
 		<div className={styles.Detail}>
 			<Navigation />
 			{!data || loading ? (
-				<Spinner animation="border" role="status">
-					<span className="visually-hidden">Загрузка...</span>
-				</Spinner>
+				<span>Загрузка...</span>
 			) : (
 				<div className={styles.row}>
 					{data.image && <img src={data.image} alt={data.name} />}
@@ -69,18 +65,18 @@ export default function Detail() {
 										{data.type || 'нет'}
 									</p>
 									{data.episode && data.episode.length > 0 && (
-										<ListGroup>
+										<ul>
 											{data.episode.map(
 												(ep) =>
 													ep && (
-														<ListGroup.Item key={ep}>
+														<li key={ep}>
 															<Link to={`/characters/${ep}`}>
 																{getEpisodeName(ep)}
 															</Link>
-														</ListGroup.Item>
+														</li>
 													)
 											)}
-										</ListGroup>
+										</ul>
 									)}
 								</div>
 							)}
@@ -95,18 +91,18 @@ export default function Detail() {
 										{data.dimension || 'нет'}
 									</p>
 									{data.residents && data.residents.length > 0 && (
-										<ListGroup>
+										<ul>
 											{data.residents.map(
 												(res) =>
 													res && (
-														<ListGroup.Item key={res}>
+														<li key={res}>
 															<Link to={`/locations/${res}`}>
 																{getCharacterName(res)}
 															</Link>
-														</ListGroup.Item>
+														</li>
 													)
 											)}
-										</ListGroup>
+										</ul>
 									)}
 								</div>
 							)}
@@ -121,18 +117,18 @@ export default function Detail() {
 										{data.air_date || 'нет'}
 									</p>
 									{data.characters && data.characters.length > 0 && (
-										<ListGroup>
+										<ul>
 											{data.characters.map(
 												(char) =>
 													char && (
-														<ListGroup.Item key={char}>
+														<li key={char}>
 															<Link to={`/episodes/${char}`}>
 																{getCharacterName(char)}
 															</Link>
-														</ListGroup.Item>
+														</li>
 													)
 											)}
-										</ListGroup>
+										</ul>
 									)}
 								</div>
 							)}
