@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/rs-react-router-v6/static/css/main.7251a855.css",
-    "main.js": "/rs-react-router-v6/static/js/main.d9a40a08.js",
+    "main.js": "/rs-react-router-v6/static/js/main.263833f2.js",
     "static/js/824.96b79c85.chunk.js": "/rs-react-router-v6/static/js/824.96b79c85.chunk.js",
     "static/media/RickMorty.jpg": "/rs-react-router-v6/static/media/RickMorty.9fdf6a7d27b74e887072.jpg",
     "static/media/space.jpg": "/rs-react-router-v6/static/media/space.ee78249b231570d36293.jpg",
     "index.html": "/rs-react-router-v6/index.html",
     "main.7251a855.css.map": "/rs-react-router-v6/static/css/main.7251a855.css.map",
-    "main.d9a40a08.js.map": "/rs-react-router-v6/static/js/main.d9a40a08.js.map"
+    "main.263833f2.js.map": "/rs-react-router-v6/static/js/main.263833f2.js.map"
   },
   "entrypoints": [
     "static/css/main.7251a855.css",
-    "static/js/main.d9a40a08.js"
+    "static/js/main.263833f2.js"
   ]
 }
