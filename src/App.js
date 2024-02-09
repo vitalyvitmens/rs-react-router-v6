@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home, Category, Detail, NotFound } from './components'
-import styles from './app.module.css'
 
 export const App = () => {
 	return (
