@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import { Spinner, Form } from 'react-bootstrap'
 import Navigation from '../Navigation/Navigation'
+import NotFound from '../NotFound/NotFound'
 import styles from './Category.module.css'
 
 export default function Category() {
@@ -46,6 +47,10 @@ export default function Category() {
 	const handleChangeSort = (event) => {
 		const value = event.target.value
 		setSearchParams({ sort: value })
+	}
+
+	if (category && !['characters', 'locations', 'episodes'].includes(category)) {
+		return <NotFound />
 	}
 
 	return (

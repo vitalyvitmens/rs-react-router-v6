@@ -3,8 +3,9 @@ import { Link, useParams, useNavigate } from 'react-router-dom'
 import { ListGroup, Spinner } from 'react-bootstrap'
 import { getEpisodeName } from '../../utils/getEpisodeName'
 import { getCharacterName } from '../../utils/getCharacterName'
-import Navigation from '../Navigation/Navigation'
 import { Button } from '../Button/Button'
+import Navigation from '../Navigation/Navigation'
+import NotFound from '../NotFound/NotFound'
 import styles from './Detail.module.css'
 
 export default function Detail() {
@@ -12,6 +13,7 @@ export default function Detail() {
 	const navigate = useNavigate()
 	const [data, setData] = useState({})
 	const [loading, setLoading] = useState(true)
+	console.log(loading)
 
 	useEffect(() => {
 		async function fetchData() {
@@ -30,6 +32,10 @@ export default function Detail() {
 
 		fetchData()
 	}, [category, id])
+
+	if (!data && !loading) {
+		return <NotFound />
+	}
 
 	return (
 		<div className={styles.Detail}>
@@ -68,7 +74,7 @@ export default function Detail() {
 												(ep) =>
 													ep && (
 														<ListGroup.Item key={ep}>
-															<Link to={`/${category}/${ep}`}>
+															<Link to={`/characters/${ep}`}>
 																{getEpisodeName(ep)}
 															</Link>
 														</ListGroup.Item>
@@ -94,7 +100,7 @@ export default function Detail() {
 												(res) =>
 													res && (
 														<ListGroup.Item key={res}>
-															<Link to={`/${category}/${res}`}>
+															<Link to={`/locations/${res}`}>
 																{getCharacterName(res)}
 															</Link>
 														</ListGroup.Item>
@@ -120,7 +126,7 @@ export default function Detail() {
 												(char) =>
 													char && (
 														<ListGroup.Item key={char}>
-															<Link to={`/${category}/${char}`}>
+															<Link to={`/episodes/${char}`}>
 																{getCharacterName(char)}
 															</Link>
 														</ListGroup.Item>
