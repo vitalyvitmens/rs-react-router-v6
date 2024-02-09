@@ -5,7 +5,7 @@ import styles from './app.module.css'
 export const App = () => {
 	return (
 		<div className={styles.App}>
-			<BrowserRouter>
+			<BrowserRouter basename="/rs-react-router-v6">
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/:category" element={<Category />} />
