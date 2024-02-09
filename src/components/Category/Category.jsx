@@ -3,6 +3,7 @@ import { Link, useSearchParams, useParams } from 'react-router-dom'
 import Navigation from '../Navigation/Navigation'
 import NotFound from '../NotFound/NotFound'
 import styles from './Category.module.css'
+import { CustomSelect } from '../CustomSelect/CustomSelect'
 
 export default function Category() {
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -56,17 +57,15 @@ export default function Category() {
 		<div className={styles.Category}>
 			<Navigation />
 			<form>
-				<label htmlFor="select">Сортировать по дате создания:</label>
-				<select
+				{/* <label htmlFor="select">Сортировать по дате создания:</label> */}
+				<CustomSelect
+					label="Сортировать по дате создания:"
+					type="select"
 					id="select"
 					name="select"
 					value={sort || ''}
 					onChange={handleChangeSort}
-				>
-					<option value="">Без сортировки</option>
-					<option value="ASC">По возрастанию</option>
-					<option value="DESC">По убыванию</option>
-				</select>
+				/>
 			</form>
 			{!data || loading ? (
 				<span>Загрузка...</span>
