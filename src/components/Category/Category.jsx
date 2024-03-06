@@ -14,8 +14,8 @@ export const Category = () => {
 		async function fetchData() {
 			try {
 				const json = await import('../../db.json')
-				const array = json[category]
-				setData(array)
+				const categoriesArray = json[category]
+				setData(categoriesArray)
 				setCategoryLoading(false)
 			} catch (error) {
 				console.error(error)
