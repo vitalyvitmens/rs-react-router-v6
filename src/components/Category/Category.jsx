@@ -51,6 +51,19 @@ export const Category = () => {
 		return <NotFound />
 	}
 
+	const categoryList =
+		!data || isCategoryLoading ? (
+			<span>Загрузка...</span>
+		) : (
+			<ul>
+				{sortByCreated(data, sortType).map((item) => (
+					<li key={item.id}>
+						<Link to={`/${category}/${item.id}`}>{item.name}</Link>
+					</li>
+				))}
+			</ul>
+		)
+
 	return (
 		<div className={styles.Category}>
 			<Navigation />
@@ -64,17 +77,7 @@ export const Category = () => {
 					onChange={handleChangeSort}
 				/>
 			</form>
-			{!data || isCategoryLoading ? (
-				<span>Загрузка...</span>
-			) : (
-				<ul>
-					{sortByCreated(data, sortType).map((item) => (
-						<li key={item.id}>
-							<Link to={`/${category}/${item.id}`}>{item.name}</Link>
-						</li>
-					))}
-				</ul>
-			)}
+			{categoryList}
 		</div>
 	)
 }
