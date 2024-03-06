@@ -6,20 +6,20 @@ import styles from './Category.module.css'
 export const Category = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const { category } = useParams()
-	const sort = searchParams.get('sort')
+	const sortType = searchParams.get('sort')
 	const [data, setData] = useState([])
-	const [loading, setLoading] = useState(true)
+	const [isCategoryLoading, setCategoryLoading] = useState(true)
 
 	useEffect(() => {
 		async function fetchData() {
 			try {
 				const json = await import('../../db.json')
-				const array = json[category]
-				setData(array)
-				setLoading(false)
+				const categoriesArray = json[category]
+				setData(categoriesArray)
+				setCategoryLoading(false)
 			} catch (error) {
 				console.error(error)
-				setLoading(false)
+				setCategoryLoading(false)
 			}
 		}
 
@@ -51,6 +51,19 @@ export const Category = () => {
 		return <NotFound />
 	}
 
+	const categoryList =
+		!data || isCategoryLoading ? (
+			<span>Загрузка...</span>
+		) : (
+			<ul>
+				{sortByCreated(data, sortType).map((item) => (
+					<li key={item.id}>
+						<Link to={`/${category}/${item.id}`}>{item.name}</Link>
+					</li>
+				))}
+			</ul>
+		)
+
 	return (
 		<div className={styles.Category}>
 			<Navigation />
@@ -60,21 +73,11 @@ export const Category = () => {
 					type="select"
 					id="select"
 					name="select"
-					value={sort || ''}
+					value={sortType || ''}
 					onChange={handleChangeSort}
 				/>
 			</form>
-			{!data || loading ? (
-				<span>Загрузка...</span>
-			) : (
-				<ul>
-					{sortByCreated(data, sort).map((item) => (
-						<li key={item.id}>
-							<Link to={`/${category}/${item.id}`}>{item.name}</Link>
-						</li>
-					))}
-				</ul>
-			)}
+			{categoryList}
 		</div>
 	)
 }
