@@ -8,7 +8,7 @@ export const Category = () => {
 	const { category } = useParams()
 	const sortType = searchParams.get('sort')
 	const [data, setData] = useState([])
-	const [loading, setLoading] = useState(true)
+	const [isCategoryLoading, setCategoryLoading] = useState(true)
 
 	useEffect(() => {
 		async function fetchData() {
@@ -16,10 +16,10 @@ export const Category = () => {
 				const json = await import('../../db.json')
 				const array = json[category]
 				setData(array)
-				setLoading(false)
+				setCategoryLoading(false)
 			} catch (error) {
 				console.error(error)
-				setLoading(false)
+				setCategoryLoading(false)
 			}
 		}
 
@@ -64,7 +64,7 @@ export const Category = () => {
 					onChange={handleChangeSort}
 				/>
 			</form>
-			{!data || loading ? (
+			{!data || isCategoryLoading ? (
 				<span>Загрузка...</span>
 			) : (
 				<ul>
