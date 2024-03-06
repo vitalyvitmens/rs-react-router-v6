@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/rs-react-router-v6/static/css/main.306ccd61.css",
-    "main.js": "/rs-react-router-v6/static/js/main.8dac6d48.js",
+    "main.css": "/rs-react-router-v6/static/css/main.85bf4186.css",
+    "main.js": "/rs-react-router-v6/static/js/main.5501623f.js",
     "static/js/824.96b79c85.chunk.js": "/rs-react-router-v6/static/js/824.96b79c85.chunk.js",
     "static/media/RickMorty.jpg": "/rs-react-router-v6/static/media/RickMorty.9fdf6a7d27b74e887072.jpg",
     "static/media/space.jpg": "/rs-react-router-v6/static/media/space.ee78249b231570d36293.jpg",
     "index.html": "/rs-react-router-v6/index.html",
-    "main.306ccd61.css.map": "/rs-react-router-v6/static/css/main.306ccd61.css.map",
-    "main.8dac6d48.js.map": "/rs-react-router-v6/static/js/main.8dac6d48.js.map"
+    "main.85bf4186.css.map": "/rs-react-router-v6/static/css/main.85bf4186.css.map",
+    "main.5501623f.js.map": "/rs-react-router-v6/static/js/main.5501623f.js.map"
   },
   "entrypoints": [
-    "static/css/main.306ccd61.css",
-    "static/js/main.8dac6d48.js"
+    "static/css/main.85bf4186.css",
+    "static/js/main.5501623f.js"
   ]
 }
