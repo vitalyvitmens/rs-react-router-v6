@@ -6,7 +6,7 @@ import styles from './Category.module.css'
 export const Category = () => {
 	const [searchParams, setSearchParams] = useSearchParams()
 	const { category } = useParams()
-	const sort = searchParams.get('sort')
+	const sortType = searchParams.get('sort')
 	const [data, setData] = useState([])
 	const [loading, setLoading] = useState(true)
 
@@ -60,7 +60,7 @@ export const Category = () => {
 					type="select"
 					id="select"
 					name="select"
-					value={sort || ''}
+					value={sortType || ''}
 					onChange={handleChangeSort}
 				/>
 			</form>
@@ -68,7 +68,7 @@ export const Category = () => {
 				<span>Загрузка...</span>
 			) : (
 				<ul>
-					{sortByCreated(data, sort).map((item) => (
+					{sortByCreated(data, sortType).map((item) => (
 						<li key={item.id}>
 							<Link to={`/${category}/${item.id}`}>{item.name}</Link>
 						</li>
